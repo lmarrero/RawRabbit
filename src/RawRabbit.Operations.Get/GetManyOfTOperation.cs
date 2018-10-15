@@ -28,7 +28,7 @@ namespace RawRabbit
 
 			return new Ackable<List<Ackable<TMessage>>>(
 				result,
-				result.FirstOrDefault()?.Channel,
+				channel,
 				list => list.Where(a => !a.Acknowledged).SelectMany(a => a.DeliveryTags).ToArray()
 			);
 		}
